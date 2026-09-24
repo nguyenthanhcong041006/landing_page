@@ -78,7 +78,7 @@ Trước khi đưa lên máy chủ hoặc kiểm tra tối ưu hóa production:
 
 ---
 
-## 🛠 Các lệnh có sẵn (Scripts)
+## Các lệnh có sẵn (Scripts)
 
 | Lệnh            | Ý nghĩa                                                                            |
 | :-------------- | :--------------------------------------------------------------------------------- |
