@@ -4,7 +4,8 @@ Website landing page giới thiệu sản phẩm nội thất cao cấp **foxxch
 
 ---
 
-## 📋 Mục lục
+## Mục lục
+
 - [Yêu cầu hệ thống](#-yêu-cầu-hệ-thống)
 - [Cài đặt và chạy dự án](#-cài-đặt-và-chạy-dự-án)
   - [1. Cài đặt thư viện](#1-cài-đặt-thư-viện)
@@ -17,14 +18,16 @@ Website landing page giới thiệu sản phẩm nội thất cao cấp **foxxch
 
 ---
 
-## 💻 Yêu cầu hệ thống
+## Yêu cầu hệ thống
 
 Trước khi bắt đầu, hãy đảm bảo máy tính của bạn đã cài đặt:
-* **Node.js**: Phiên bản `18.17.0` trở lên (Khuyến nghị bản LTS như `v20.x` hoặc `v22.x`).
-* **Trình quản lý gói**: `npm` (đi kèm Node.js), `yarn` hoặc `pnpm`.
-* Trình duyệt web hiện đại (Chrome, Edge, Firefox, Safari).
+
+- **Node.js**: Phiên bản `18.17.0` trở lên (Khuyến nghị bản LTS như `v20.x` hoặc `v22.x`).
+- **Trình quản lý gói**: `npm` (đi kèm Node.js), `yarn` hoặc `pnpm`.
+- Trình duyệt web hiện đại (Chrome, Edge, Firefox, Safari).
 
 Kiểm tra phiên bản Node.js và npm bằng terminal:
+
 ```bash
 node -v
 npm -v
@@ -32,9 +35,10 @@ npm -v
 
 ---
 
-## 🚀 Cài đặt và chạy dự án
+## Cài đặt và chạy dự án
 
 ### 1. Cài đặt thư viện
+
 Mở terminal tại thư mục gốc của dự án (`web_japan_to_viet`) và chạy lệnh:
 
 ```bash
@@ -42,6 +46,7 @@ npm install
 ```
 
 ### 2. Chạy môi trường Development
+
 Để khởi động máy chủ thử nghiệm cục bộ với tính năng Hot Reload:
 
 ```bash
@@ -49,13 +54,16 @@ npm run dev
 ```
 
 Sau khi terminal hiển thị:
+
 ```text
   ▲ Next.js 14.2.35
   - Local:        http://localhost:3000
 ```
+
 Mở trình duyệt và truy cập vào đường dẫn: **[http://localhost:3000](http://localhost:3000)**
 
 ### 3. Build & chạy môi trường Production
+
 Trước khi đưa lên máy chủ hoặc kiểm tra tối ưu hóa production:
 
 1. **Biên dịch dự án:**
@@ -66,37 +74,37 @@ Trước khi đưa lên máy chủ hoặc kiểm tra tối ưu hóa production:
    ```bash
    npm run start
    ```
-Ứng dụng sẽ chạy tại cổng mặc định `http://localhost:3000`.
+   Ứng dụng sẽ chạy tại cổng mặc định `http://localhost:3000`.
 
 ---
 
 ## 🛠 Các lệnh có sẵn (Scripts)
 
-| Lệnh | Ý nghĩa |
-| :--- | :--- |
-| `npm run dev` | Khởi chạy server phát triển trên `localhost:3000` (hỗ trợ Hot Module Replacement). |
-| `npm run build` | Biên dịch và tối ưu mã nguồn cho môi trường production. |
-| `npm run start` | Chạy ứng dụng production sau khi đã `build`. |
-| `npm run lint` | Kiểm tra cú pháp và quy chuẩn mã nguồn (ESLint). |
+| Lệnh            | Ý nghĩa                                                                            |
+| :-------------- | :--------------------------------------------------------------------------------- |
+| `npm run dev`   | Khởi chạy server phát triển trên `localhost:3000` (hỗ trợ Hot Module Replacement). |
+| `npm run build` | Biên dịch và tối ưu mã nguồn cho môi trường production.                            |
+| `npm run start` | Chạy ứng dụng production sau khi đã `build`.                                       |
+| `npm run lint`  | Kiểm tra cú pháp và quy chuẩn mã nguồn (ESLint).                                   |
 
 ---
 
-## 📦 Tải tài nguyên Media (Tùy chọn)
+## Tải tài nguyên Media (Tùy chọn)
 
 Dự án có sẵn script tự động tải hình ảnh, video và icons gốc từ website chính:
 
-* Sử dụng Node.js:
+- Sử dụng Node.js:
   ```bash
   node scripts/download-assets.mjs
   ```
-* Hoặc sử dụng PowerShell (trên Windows):
+- Hoặc sử dụng PowerShell (trên Windows):
   ```powershell
   powershell -ExecutionPolicy Bypass -File scripts/download.ps1
   ```
 
 ---
 
-## 📁 Cấu trúc thư mục
+## Cấu trúc thư mục
 
 ```text
 web_japan_to_viet/
@@ -131,10 +139,10 @@ web_japan_to_viet/
 
 ---
 
-## ✨ Các tính năng nổi bật
+## Các tính năng nổi bật
 
 1. **Hero Video Banner**: Video toàn màn hình tự động phát với hiệu ứng chuyển động mượt mà.
-2. **Concept & How-To Section**: Giới thiệu triết lý không gian thứ 3 (*Third Place*) kết hợp video hướng dẫn gấp gọn.
+2. **Concept & How-To Section**: Giới thiệu triết lý không gian thứ 3 (_Third Place_) kết hợp video hướng dẫn gấp gọn.
 3. **Gallery Slider**: Băng chuyền hình ảnh vô cực (Infinite Marquee) tự động chạy lặp liền mạch.
 4. **Modal Chi Tiết Sản Phẩm**: Xem thư viện hình ảnh chi tiết, thông số kỹ thuật (kích thước, tải trọng, chất liệu gỗ sồi/da tự nhiên).
 5. **Danh sách Tin tức & Cửa hàng**: Hỗ trợ xem thông tin showroom kèm bản đồ vị trí chỉ dẫn.
