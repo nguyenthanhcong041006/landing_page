@@ -11,8 +11,9 @@ const galleryImages = [
 ];
 
 export default function GallerySection() {
-  // Duplicate array for seamless infinite marquee loop
-  const duplicatedImages = [...galleryImages, ...galleryImages, ...galleryImages];
+  // 2 identical halves for a seamless infinite marquee loop without stutter
+  const singleSet = [...galleryImages, ...galleryImages];
+  const duplicatedImages = [...singleSet, ...singleSet];
 
   return (
     <section id="03" className="top-slider">
@@ -23,8 +24,9 @@ export default function GallerySection() {
               <Image
                 src={item.src}
                 alt={item.alt}
-                width={480}
-                height={300}
+                width={800}
+                height={1200}
+                sizes="(max-width: 768px) 50vw, 33.33vw"
                 loading="lazy"
               />
             </div>

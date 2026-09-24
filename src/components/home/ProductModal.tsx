@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Product } from '@/types';
 
 interface ProductModalProps {
@@ -192,11 +193,10 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
             {/* Online Shop Order CTA Button */}
             <div className="disp-pc">
-              <a
-                href={product.shopUrl}
+              <Link
+                href="/online-store"
                 className="icon-btn"
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={onClose}
               >
                 <Image
                   src="/icons/icon_cart.svg"
@@ -205,7 +205,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   height={20}
                 />
                 <span>Đặt Mua Trên Cửa Hàng Trực Tuyến</span>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -227,11 +227,10 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
           )}
 
           <div className="disp-sp" style={{ width: '100%', marginTop: '20px' }}>
-            <a
-              href={product.shopUrl}
+            <Link
+              href="/online-store"
               className="icon-btn"
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={onClose}
             >
               <Image
                 src="/icons/icon_cart.svg"
@@ -240,7 +239,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                 height={20}
               />
               <span>Đặt Mua Trên Cửa Hàng Trực Tuyến</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

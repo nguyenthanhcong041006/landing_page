@@ -63,5 +63,20 @@ export const newsItems: NewsItem[] = [
       <p>Giải thưởng này là sự khẳng định cho tâm huyết của đội ngũ thiết kế và chế tác suốt nhiều năm qua, đồng thời là động lực to lớn để chúng tôi tiếp tục sáng tạo nên những giá trị sống đích thực.</p>
     `,
     tags: ['Red Dot', 'Giải thưởng quốc tế', 'Thiết kế xuất sắc']
+  },
+  {
+    id: '36',
+    title: 'foxx chair vinh dự nhận giải thưởng thiết kế quốc tế iF DESIGN AWARD 2023',
+    category: 'Giải thưởng',
+    date: '2023.06.06 Thứ Ba',
+    image: '/images/news/news-5.png',
+    excerpt: 'foxx chair tự hào được vinh danh tại giải thưởng thiết kế danh giá toàn cầu iF DESIGN AWARD 2023, vượt qua hơn 10.500 tác phẩm dự thi từ 56 quốc gia.',
+    content: `
+      <p>Thương hiệu <strong>foxx chair</strong> vô cùng tự hào khi chính thức được trao giải thưởng <strong>iF DESIGN AWARD 2023</strong>.</p>
+      <p><strong>iF DESIGN AWARD</strong> do tổ chức <em>iF International Forum Design GmbH (CHLB Đức)</em> chủ trì, là một trong những giải thưởng thiết kế uy tín và lâu đời nhất thế giới từ năm 1953.</p>
+      <p>Giải thưởng bao gồm 9 lĩnh vực thiết kế chuyên môn. Tại kỳ trao giải năm 2023, hội đồng giám khảo gồm 133 chuyên gia thiết kế hàng đầu thế giới đã thẩm định nghiêm ngặt hơn 10.544 tác phẩm đến từ 56 quốc gia và vùng lãnh thổ, dựa trên 5 tiêu chí cốt lõi: <em>Khác biệt hóa, Thiết kế thẩm mỹ, Tính năng công thái học, Ý tưởng sáng tạo và Tác động xã hội</em>.</p>
+      <p>Chiến thắng này là minh chứng rõ nét cho triết lý thiết kế tinh tế và năng lực hoàn thiện sản phẩm chuẩn mực của foxx chair.</p>
+    `,
+    tags: ['iF Design', 'Giải thưởng quốc tế', 'Thiết kế xuất sắc']
   }
 ];

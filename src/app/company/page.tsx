@@ -42,7 +42,7 @@ export default function CompanyPage() {
                 </tr>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
                   <th style={{ padding: '16px 0', fontWeight: '600', color: '#333' }}>Giải thưởng tiêu biểu</th>
-                  <td style={{ padding: '16px 0' }}>Giải thưởng thiết kế quốc tế Red Dot Design Award 2023 (Cộng hòa Liên bang Đức)</td>
+                  <td style={{ padding: '16px 0' }}>Giải thưởng thiết kế quốc tế Red Dot Design Award 2023 &amp; iF DESIGN AWARD 2023 (Cộng hòa Liên bang Đức)</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
                   <th style={{ padding: '16px 0', fontWeight: '600', color: '#333' }}>Website chính thức</th>

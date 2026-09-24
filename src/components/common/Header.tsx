@@ -107,6 +107,11 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
                 LIÊN HỆ & TƯ VẤN
               </Link>
             </li>
+            <li>
+              <Link href="/online-store" className="menulink" onClick={closeMenu}>
+                CỬA HÀNG TRỰC TUYẾN
+              </Link>
+            </li>
           </ul>
 
           <ul className="menu-list-sub">
@@ -125,11 +130,9 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
       </div>
 
       {/* Header Cart / Store Quick Link */}
-      <a
-        href="https://foxxchair.theshop.jp/"
+      <Link
+        href="/online-store"
         className="icon hd-storelink"
-        target="_blank"
-        rel="noopener noreferrer"
         title="Cửa hàng trực tuyến"
       >
         <Image
@@ -139,7 +142,7 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
           height={18}
         />
         <span>Cửa hàng trực tuyến</span>
-      </a>
+      </Link>
     </header>
   );
 }

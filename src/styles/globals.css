@@ -236,6 +236,53 @@ table th {
 .fadeup-b { animation: fadeIn 1s ease 0.5s 1 normal backwards; }
 .fadeup-c { animation: fadeIn 1s ease 0.7s 1 normal backwards; }
 
+/* Scroll Reveal: Fade & Blur to Sharp on Scroll (Snappy & Smooth) */
+.scroll-reveal,
+.business-card-container,
+.shop-card,
+.fu01, .fu02, .fu03, .fu04, .fu05, .fu06, .fu07, .fu08, .fu09, .fu10,
+[data-reveal],
+.reveal-on-scroll {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(22px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter, transform;
+}
+
+.scroll-reveal.is-visible,
+.business-card-container.is-visible,
+.shop-card.is-visible,
+.fu01.is-visible, .fu02.is-visible, .fu03.is-visible, .fu04.is-visible,
+.fu05.is-visible, .fu06.is-visible, .fu07.is-visible, .fu08.is-visible,
+.fu09.is-visible, .fu10.is-visible,
+[data-reveal].is-visible,
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.fu02 {
+  transition-delay: 0.08s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .business-card-container,
+  .shop-card,
+  .fu01, .fu02, .fu03, .fu04, .fu05, .fu06, .fu07, .fu08, .fu09, .fu10,
+  [data-reveal],
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* Header & Navigation */
 header {
   position: absolute;
@@ -602,32 +649,25 @@ section.top-slider {
 
 .gallery-track {
   display: flex;
-  gap: 24px;
+  gap: 0;
   width: max-content;
-  animation: marquee 45s linear infinite;
-}
-
-.gallery-track:hover {
-  animation-play-state: paused;
+  animation: marquee 130s linear infinite;
+  will-change: transform;
 }
 
 .gallery-track .gallery-item {
-  width: 480px;
-  aspect-ratio: 16 / 10;
+  width: calc(100vw / 3);
+  aspect-ratio: 2 / 3;
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .gallery-track .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.gallery-track .gallery-item:hover img {
-  transform: scale(1.03);
+  display: block;
 }
 
 @keyframes marquee {
@@ -636,8 +676,12 @@ section.top-slider {
 }
 
 @media screen and (max-width: 767px) {
+  .gallery-track {
+    gap: 0;
+  }
+
   .gallery-track .gallery-item {
-    width: 290px;
+    width: 50vw;
   }
 }
 
@@ -867,11 +911,15 @@ ul.news-list1 li a .txt time {
   align-items: center;
   border: 1px #555 solid;
   border-radius: 46px;
-  font-size: 1.6rem;
-  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.45rem;
+  font-weight: 500;
   position: relative;
   color: #555;
-  transition: all 0.2s ease;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
+  background-color: #ffffff;
 }
 
 .btn-next:before {

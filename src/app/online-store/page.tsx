@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 
-export default function ContactPage() {
+export default function OnlineStorePage() {
 
   return (
     <>
@@ -17,10 +17,10 @@ export default function ContactPage() {
         <section className="contact-hd">
           <div className="tl-mds">
             <h2 style={{ color: '#000000', fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
-              LIÊN HỆ &amp; TƯ VẤN
+              CỬA HÀNG TRỰC TUYẾN
             </h2>
-            <p style={{ color: '#444444', fontFamily: 'Poppins, sans-serif', fontSize: '1.5rem', marginTop: '10px' }}>
-              Thông tin liên hệ &amp; Đại diện kinh doanh foxx chair tại Việt Nam
+            <p style={{ color: '#444444', fontFamily: 'Poppins, sans-serif', fontSize: '1.5rem', marginTop: '8px' }}>
+              Kênh phân phối chính thức &amp; Thông tin đại diện kinh doanh foxx chair tại Việt Nam
             </p>
           </div>
         </section>
@@ -32,16 +32,16 @@ export default function ContactPage() {
               backgroundColor: '#ffffff',
               border: '1px solid #e0e0e0',
               borderRadius: '12px',
-              padding: '44px 52px',
+              padding: '40px 48px',
               boxShadow: '0 12px 36px rgba(0, 0, 0, 0.06)',
               fontFamily: '"Poppins", sans-serif',
               color: '#000000',
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'flex-start',
-              gap: '40px',
+              gap: '36px',
             }}
-            className="business-card-container"
+            className="business-card-container scroll-reveal"
           >
             {/* Logo Left */}
             <div
@@ -73,8 +73,8 @@ export default function ContactPage() {
                   fontWeight: 700,
                   letterSpacing: '0.02em',
                   color: '#000000',
-                  margin: '0 0 14px 0',
-                  lineHeight: 1.35,
+                  margin: '0 0 10px 0',
+                  lineHeight: 1.3,
                 }}
               >
                 CÔNG TY TNHH TRIACE VIỆT NAM
@@ -88,7 +88,7 @@ export default function ContactPage() {
                   fontStyle: 'italic',
                   fontWeight: 500,
                   color: '#000000',
-                  margin: '0 0 4px 0',
+                  margin: '0 0 2px 0',
                   lineHeight: 1.3,
                 }}
               >
@@ -183,8 +183,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Action Button: QUAY LẠI TRANG CHỦ */}
+          {/* Action Button: ĐÃ HIỂU */}
           <div
+            className="scroll-reveal"
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -197,40 +198,25 @@ export default function ContactPage() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '12px',
-                minWidth: '240px',
-                padding: '14px 44px',
+                minWidth: '220px',
+                padding: '14px 48px',
                 backgroundColor: '#000000',
                 color: '#ffffff',
                 border: 'none',
                 borderRadius: '8px',
                 fontFamily: '"Poppins", sans-serif',
-                fontSize: '1.5rem',
+                fontSize: '1.6rem',
                 fontWeight: 600,
-                letterSpacing: '0.04em',
-                cursor: 'pointer',
+                letterSpacing: '0.05em',
                 textDecoration: 'none',
+                cursor: 'pointer',
                 boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
                 transition: 'opacity 0.2s ease, transform 0.15s ease',
               }}
               onMouseOver={e => (e.currentTarget.style.opacity = '0.85')}
               onMouseOut={e => (e.currentTarget.style.opacity = '1')}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ flexShrink: 0 }}
-              >
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              <span>QUAY LẠI TRANG CHỦ</span>
+              ĐÃ HIỂU
             </Link>
           </div>
         </section>
