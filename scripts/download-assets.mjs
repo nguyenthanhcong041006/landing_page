@@ -70,19 +70,19 @@ const assets = [
   },
   // Gallery
   {
-    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/7_foxxchair_AI%E9%81%BD%E6%B6%BC%E3%83%BBimage_250625-scaled.jpg',
+    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/7_foxxchair_AI%E9%80%95%E6%BB%93%E3%83%BBimage_250625-scaled.jpg',
     dest: 'public/images/gallery/gallery-1.jpg'
   },
   {
-    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/foxxchair_AI%E9%81%BD%E6%B6%BC%E3%83%BBimage_250702-13-2-e1754029605289.jpg',
+    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/foxxchair_AI%E9%80%95%E6%BB%93%E3%83%BBimage_250702-13-2-e1754029605289.jpg',
     dest: 'public/images/gallery/gallery-2.jpg'
   },
   {
-    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/1_foxxchair_AI%E9%81%BD%E6%B6%BC%E3%83%BBimage_250625.jpg',
+    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/1_foxxchair_AI%E9%80%95%E6%BB%93%E3%83%BBimage_250625.jpg',
     dest: 'public/images/gallery/gallery-3.jpg'
   },
   {
-    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/5_foxxchair_AI%E9%81%BD%E6%B6%BC%E3%83%BBimage_250625-scaled.jpg',
+    url: 'https://foxxchair.jp/wp-content/uploads/2025/08/5_foxxchair_AI%E9%80%95%E6%BB%93%E3%83%BBimage_250625-scaled.jpg',
     dest: 'public/images/gallery/gallery-4.jpg'
   },
   // Product Thumbs
