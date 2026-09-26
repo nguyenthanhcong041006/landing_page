@@ -169,7 +169,7 @@ export default function ContactPage() {
                   </a>
                 </div>
                 <div>
-                  <strong>Web-Site:</strong>{' '}
+                  <strong>Trang web:</strong>{' '}
                   <a
                     href="https://www.sanyeicorp.com"
                     target="_blank"

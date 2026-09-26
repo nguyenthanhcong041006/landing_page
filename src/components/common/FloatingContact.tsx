@@ -5,36 +5,64 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function FloatingContact() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isUp, setIsUp] = useState(false);
+  const [isUpAdd, setIsUpAdd] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY;
-      const heroThreshold = 400;
-      if (scrollPos > heroThreshold) {
-        setIsVisible(true);
+      const scroll = window.scrollY;
+      const heroBtm = document.getElementById('01');
+      const footer = document.querySelector('footer');
+      const winHeight = window.innerHeight;
+
+      if (heroBtm) {
+        const objTop = heroBtm.offsetTop;
+        if (scroll >= objTop - 50) {
+          setIsUp(true);
+        } else {
+          setIsUp(false);
+        }
       } else {
-        setIsVisible(false);
+        if (scroll > 200) {
+          setIsUp(true);
+        } else {
+          setIsUp(false);
+        }
+      }
+
+      if (footer) {
+        const objFot = footer.offsetTop;
+        const objHei = footer.clientHeight - 100;
+        if (scroll > objFot - winHeight + objHei) {
+          setIsUpAdd(true);
+        } else {
+          setIsUpAdd(false);
+        }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const classNames = ['contact-fixed'];
+  if (isUp) classNames.push('up');
+  if (isUpAdd) classNames.push('up-add');
 
   return (
     <Link
       href="/contact"
-      className={`contact-fixed ${isVisible ? 'up' : ''}`}
-      aria-label="Liên hệ với chúng tôi"
+      className={classNames.join(' ')}
+      aria-label="Liên hệ"
     >
       <Image
         src="/icons/icon_mail.svg"
-        alt="Thư liên hệ"
+        alt=""
         width={18}
         height={18}
       />
-      <span>Liên hệ với chúng tôi</span>
+      <span>Liên hệ</span>
     </Link>
   );
 }

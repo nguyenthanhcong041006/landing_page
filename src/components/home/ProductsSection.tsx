@@ -21,13 +21,13 @@ export default function ProductsSection() {
     <>
       <section id="04" className="top-products">
         <div className="inner-min">
-          <h2 className="fu06">BỘ SƯU TẬP SẢN PHẨM</h2>
+          <h2 className="fu06">SẢN PHẨM</h2>
           <ul className="top-products-list fu07">
             {products.map(item => (
               <li
                 key={item.id}
+                className="mopen"
                 onClick={() => handleOpenModal(item)}
-                title={`Nhấn để xem chi tiết ${item.name}`}
               >
                 <div className="img">
                   <Image
@@ -42,11 +42,11 @@ export default function ProductsSection() {
                   <div className="name">
                     <h3>
                       <span>foxx Chair</span>
-                      {item.subName}
+                      {item.name}
                     </h3>
                     <p className="price">
-                      {item.price}
-                      <span>(Đã bao gồm thuế)</span>
+                      ¥{item.priceNum.toLocaleString()}
+                      <span> (Đã bao gồm thuế)</span>
                     </p>
                   </div>
                 </div>

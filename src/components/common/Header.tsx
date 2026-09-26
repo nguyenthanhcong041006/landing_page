@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import OnlineStoreModal from './OnlineStoreModal';
 
 interface HeaderProps {
   isUnderPage?: boolean;
@@ -11,6 +12,13 @@ interface HeaderProps {
 export default function Header({ isUnderPage = false }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolledDark, setIsScrolledDark] = useState(isUnderPage);
+  const [isStoreModalOpen, setIsStoreModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenStore = () => setIsStoreModalOpen(true);
+    window.addEventListener('open-online-store', handleOpenStore);
+    return () => window.removeEventListener('open-online-store', handleOpenStore);
+  }, []);
 
   useEffect(() => {
     if (isUnderPage) {
@@ -19,16 +27,25 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
     }
 
     const handleScroll = () => {
-      const scrollPos = window.scrollY;
-      const heroThreshold = window.innerHeight - 100;
-      if (scrollPos > heroThreshold) {
-        setIsScrolledDark(true);
+      const heroBtm = document.getElementById('01');
+      if (heroBtm) {
+        const objTop = heroBtm.offsetTop;
+        if (window.scrollY >= objTop - 50) {
+          setIsScrolledDark(true);
+        } else {
+          setIsScrolledDark(false);
+        }
       } else {
-        setIsScrolledDark(false);
+        if (window.scrollY > 300) {
+          setIsScrolledDark(true);
+        } else {
+          setIsScrolledDark(false);
+        }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isUnderPage]);
 
@@ -42,26 +59,30 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
 
   return (
     <header className={isOpen ? 'open' : ''}>
-      <h1 className="logo fadeup-a">
+      <h1 id="fadeup-a" className="logo">
         <Link href="/" onClick={closeMenu}>
           <Image
             src={isUnderPage ? "/icons/logo_bk.svg" : "/icons/logo.svg"}
             alt="foxx chair"
-            width={160}
-            height={26}
+            width={210}
+            height={33}
             priority
           />
         </Link>
       </h1>
 
-      {/* Hamburger Menu Toggle Button */}
+      {/* Hamburger Menu Toggle Button (3 lines matching foxxchair.jp web gốc) */}
       <div
         className={`menu-btn ${isScrolledDark ? 'bk' : ''}`}
         onClick={toggleMenu}
-        aria-label="Mở danh mục điều hướng"
+        aria-label="Menu"
         role="button"
         tabIndex={0}
-      />
+      >
+        <span />
+        <span />
+        <span />
+      </div>
 
       {/* Side Drawer Navigation Menu */}
       <div className="menu-wrap">
@@ -74,42 +95,37 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
             </li>
             <li>
               <Link href="/#01" className="menulink" onClick={closeMenu}>
-                TRIẾT LÝ SẢN PHẨM
+                Ý TƯỞNG THIẾT KẾ
               </Link>
             </li>
             <li>
               <Link href="/#02" className="menulink" onClick={closeMenu}>
-                CƠ CHẾ & TÍNH NĂNG
+                CÔNG NĂNG
               </Link>
             </li>
             <li>
               <Link href="/#03" className="menulink" onClick={closeMenu}>
-                KHÔNG GIAN SỐNG
-              </Link>
-            </li>
-            <li>
-              <Link href="/#04" className="menulink" onClick={closeMenu}>
                 BỘ SƯU TẬP
               </Link>
             </li>
             <li>
+              <Link href="/#04" className="menulink" onClick={closeMenu}>
+                SẢN PHẨM
+              </Link>
+            </li>
+            <li>
               <Link href="/news" className="menulink" onClick={closeMenu}>
-                TIN TỨC & SỰ KIỆN
+                TIN TỨC
               </Link>
             </li>
             <li>
               <Link href="/shop-list" className="menulink" onClick={closeMenu}>
-                HỆ THỐNG CỬA HÀNG
+                ĐIỂM BÁN
               </Link>
             </li>
             <li>
               <Link href="/contact" className="menulink" onClick={closeMenu}>
-                LIÊN HỆ & TƯ VẤN
-              </Link>
-            </li>
-            <li>
-              <Link href="/online-store" className="menulink" onClick={closeMenu}>
-                CỬA HÀNG TRỰC TUYẾN
+                LIÊN HỆ
               </Link>
             </li>
           </ul>
@@ -129,11 +145,13 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
         </nav>
       </div>
 
-      {/* Header Cart / Store Quick Link */}
-      <Link
-        href="/online-store"
+      {/* Header Cart / Store Quick Button */}
+      <button
+        type="button"
+        onClick={() => setIsStoreModalOpen(true)}
         className="icon hd-storelink"
         title="Cửa hàng trực tuyến"
+        aria-label="Cửa hàng trực tuyến"
       >
         <Image
           src="/icons/icon_cart.svg"
@@ -142,7 +160,13 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
           height={18}
         />
         <span>Cửa hàng trực tuyến</span>
-      </Link>
+      </button>
+
+      {/* Online Store Popup Modal */}
+      <OnlineStoreModal
+        isOpen={isStoreModalOpen}
+        onClose={() => setIsStoreModalOpen(false)}
+      />
     </header>
   );
 }

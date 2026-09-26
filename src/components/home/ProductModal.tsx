@@ -11,14 +11,22 @@ interface ProductModalProps {
 }
 
 export default function ProductModal({ product, onClose }: ProductModalProps) {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Reset slide index when opening a new product
   useEffect(() => {
-    setCurrentSlideIndex(0);
+    setCurrentIndex(0);
   }, [product]);
 
-  // Lock body scroll when open
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     if (product) {
       document.body.classList.add('overflow-hidden');
@@ -34,108 +42,117 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
   const slides = product.sliderImages.length > 0 ? product.sliderImages : [product.thumbnail];
 
-  const nextSlide = () => {
-    setCurrentSlideIndex(prev => (prev + 1) % slides.length);
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1);
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentSlideIndex(prev => (prev - 1 + slides.length) % slides.length);
+  const nextSlide = () => {
+    if (currentIndex < slides.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+    }
   };
+
+  // Center mode transform calculation:
+  // Desktop: slide width is 50%, side padding is 25%, so offset is (25 - 50 * index)%
+  // Mobile: slide width is 100%, side padding is 0%, so offset is -100 * index%
+  const trackTransform = isMobile
+    ? `translateX(-${currentIndex * 100}%)`
+    : `translateX(${25 - currentIndex * 50}%)`;
 
   return (
     <div
-      className="modal-overlay open"
+      className="modal-overlay open modal-overlay-over"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="modal-wrapper"
+        className={`modal-wrapper modal-wrapper-${product.id}`}
         onClick={e => e.stopPropagation()}
       >
         {/* Close Button */}
-        <button
-          className="modal-cancel"
+        <span
+          className="modal-cancel mclose"
           onClick={onClose}
-          aria-label="Đóng cửa sổ"
-        >
-          <Image
-            src="/icons/modal_close.svg"
-            alt="Đóng"
-            width={20}
-            height={20}
-          />
-        </button>
+          role="button"
+          aria-label="Đóng"
+          tabIndex={0}
+        />
 
-        {/* Main Photo Slider */}
-        <div className="modal-slider-container">
-          <Image
-            src={slides[currentSlideIndex]}
-            alt={`${product.name} - ảnh ${currentSlideIndex + 1}`}
-            fill
-            className="main-slide"
-            sizes="(max-width: 768px) 100vw, 750px"
-            priority
-          />
+        {/* Carousel with centerMode and side peek */}
+        <div className="md-slider-wrap">
+          <div className="md-item-slider">
+            <div className="md-item-slider-viewport">
+              <div
+                className="md-item-slider-track"
+                style={{ transform: trackTransform }}
+              >
+                {slides.map((imgSrc, idx) => (
+                  <div
+                    key={idx}
+                    className={`md-slider-slide ${idx === currentIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentIndex(idx)}
+                    style={{ cursor: idx !== currentIndex ? 'pointer' : 'default' }}
+                  >
+                    <Image
+                      src={imgSrc}
+                      alt={`${product.name} - ảnh ${idx + 1}`}
+                      width={800}
+                      height={533}
+                      priority={idx === 0}
+                      style={{ width: '100%', height: 'auto', display: 'block' }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          {slides.length > 1 && (
-            <>
+            {/* Prev Arrow */}
+            {slides.length > 1 && (
               <button
-                className="modal-arrow prev"
+                type="button"
+                className={`slick-arrow-btn prev-arrow ${currentIndex === 0 ? 'disabled' : ''}`}
                 onClick={prevSlide}
+                disabled={currentIndex === 0}
                 aria-label="Ảnh trước"
               >
                 <Image
                   src="/icons/slider_prev.svg"
                   alt="Trước"
-                  width={16}
-                  height={16}
+                  width={88}
+                  height={88}
                 />
               </button>
+            )}
+
+            {/* Next Arrow */}
+            {slides.length > 1 && (
               <button
-                className="modal-arrow next"
+                type="button"
+                className={`slick-arrow-btn next-arrow ${currentIndex === slides.length - 1 ? 'disabled' : ''}`}
                 onClick={nextSlide}
+                disabled={currentIndex === slides.length - 1}
                 aria-label="Ảnh tiếp theo"
               >
                 <Image
                   src="/icons/slider_next.svg"
                   alt="Sau"
-                  width={16}
-                  height={16}
+                  width={88}
+                  height={88}
                 />
               </button>
-            </>
-          )}
+            )}
+          </div>
         </div>
 
-        {/* Thumbnail Selector */}
-        {slides.length > 1 && (
-          <div className="modal-thumbnails">
-            {slides.map((imgUrl, idx) => (
-              <button
-                key={idx}
-                className={`modal-thumb ${idx === currentSlideIndex ? 'active' : ''}`}
-                onClick={() => setCurrentSlideIndex(idx)}
-                aria-label={`Xem ảnh ${idx + 1}`}
-              >
-                <Image
-                  src={imgUrl}
-                  alt={`Thumbnail ${idx + 1}`}
-                  width={60}
-                  height={45}
-                  loading="lazy"
-                />
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* Product Details & Technical Drawings */}
+        {/* Specs and Technical Drawings Layout */}
         <div className="md-layout">
           <div className="txt">
             <div className="hd">
               <span>foxx chair</span>
-              <h2>{product.subName} ({product.name})</h2>
+              <h2>{product.name}</h2>
             </div>
 
             <table>
@@ -156,7 +173,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                     )}
                     {product.foldedDimensions && (
                       <>
-                        <br />Khi gấp gọn: {product.foldedDimensions}
+                        <br />Khi gập gọn: {product.foldedDimensions}
                       </>
                     )}
                   </td>
@@ -166,8 +183,15 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   <td>{product.weight}</td>
                 </tr>
                 <tr>
-                  <th>Vật liệu cấu tạo</th>
-                  <td>{product.materials}</td>
+                  <th>Cấu tạo</th>
+                  <td>
+                    {product.materials.split('\n').map((line, i) => (
+                      <React.Fragment key={i}>
+                        {i > 0 && <br />}
+                        {line}
+                      </React.Fragment>
+                    ))}
+                  </td>
                 </tr>
                 <tr>
                   <th>Màu sắc</th>
@@ -177,35 +201,28 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   <th>Xuất xứ</th>
                   <td>{product.origin}</td>
                 </tr>
-                <tr>
-                  <th>Giá niêm yết</th>
-                  <td>
-                    <strong style={{ fontSize: '1.8rem', color: '#222' }}>
-                      {product.price}
-                    </strong>
-                    <span style={{ fontSize: '1.3rem', color: '#888', marginLeft: '6px' }}>
-                      (Đã bao gồm thuế)
-                    </span>
-                  </td>
-                </tr>
               </tbody>
             </table>
 
-            {/* Online Shop Order CTA Button */}
+            {/* Desktop Store Button */}
             <div className="disp-pc">
-              <Link
-                href="/online-store"
-                className="icon-btn"
-                onClick={onClose}
+              <button
+                type="button"
+                className="icon"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent('open-online-store'));
+                }}
+                style={{ border: 'none', cursor: 'pointer' }}
               >
                 <Image
                   src="/icons/icon_cart.svg"
-                  alt="Giỏ hàng"
-                  width={20}
-                  height={20}
+                  alt=""
+                  width={26}
+                  height={26}
                 />
-                <span>Đặt Mua Trên Cửa Hàng Trực Tuyến</span>
-              </Link>
+                <span>Cửa hàng trực tuyến</span>
+              </button>
             </div>
           </div>
 
@@ -216,30 +233,34 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                 <li key={idx}>
                   <Image
                     src={sizeImg}
-                    alt={`Bản vẽ kích thước ${product.name} - ${idx + 1}`}
+                    alt={`Kích thước ${product.name} ${idx + 1}`}
                     width={280}
                     height={200}
-                    loading="lazy"
                   />
                 </li>
               ))}
             </ul>
           )}
 
-          <div className="disp-sp" style={{ width: '100%', marginTop: '20px' }}>
-            <Link
-              href="/online-store"
-              className="icon-btn"
-              onClick={onClose}
+          {/* Mobile Store Button */}
+          <div className="disp-sp">
+            <button
+              type="button"
+              className="icon"
+              onClick={() => {
+                onClose();
+                window.dispatchEvent(new CustomEvent('open-online-store'));
+              }}
+              style={{ border: 'none', cursor: 'pointer' }}
             >
               <Image
                 src="/icons/icon_cart.svg"
-                alt="Giỏ hàng"
+                alt=""
                 width={20}
                 height={20}
               />
-              <span>Đặt Mua Trên Cửa Hàng Trực Tuyến</span>
-            </Link>
+              <span>Cửa hàng trực tuyến</span>
+            </button>
           </div>
         </div>
       </div>

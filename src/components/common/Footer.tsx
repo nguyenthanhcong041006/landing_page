@@ -18,8 +18,8 @@ export default function Footer({ isUnder = false }: FooterProps) {
           <Image
             src="/icons/logo_bk.svg"
             alt="foxx chair"
-            width={180}
-            height={30}
+            width={240}
+            height={42}
           />
         </Link>
 
@@ -29,13 +29,13 @@ export default function Footer({ isUnder = false }: FooterProps) {
               href="https://www.youtube.com/channel/UC9sNxspoyKje-WGoO7ezCPQ"
               target="_blank"
               rel="noopener noreferrer"
-              title="Kênh YouTube chính thức"
+              title="YouTube"
             >
               <Image
                 src="/icons/icon_youtube.svg"
                 alt="YouTube"
-                width={24}
-                height={24}
+                width={34}
+                height={34}
               />
             </a>
           </li>
@@ -44,13 +44,13 @@ export default function Footer({ isUnder = false }: FooterProps) {
               href="https://instagram.com/foxxchair_official"
               target="_blank"
               rel="noopener noreferrer"
-              title="Trang Instagram chính thức"
+              title="Instagram"
             >
               <Image
                 src="/icons/icon_in.svg"
                 alt="Instagram"
-                width={24}
-                height={24}
+                width={34}
+                height={34}
               />
             </a>
           </li>
@@ -71,7 +71,7 @@ export default function Footer({ isUnder = false }: FooterProps) {
           </li>
         </ul>
         <p className="copyright">
-          &copy;foxxchair {currentYear} Toàn bộ bản quyền được bảo lưu.
+          &copy;foxxchair {currentYear} Bảo lưu mọi quyền.
         </p>
       </div>
     </footer>

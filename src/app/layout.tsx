@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'foxx chair - Định chuẩn giá trị thư giãn mới',
   description: 'foxx chair là dòng ghế xếp thư giãn cao cấp phong cách Nhật Bản. Thiết kế cơ chế gập gọn tức thì giúp bạn kiến tạo không gian thư thái riêng biệt mọi nơi trong ngôi nhà.',
   icons: {
-    icon: '/icons/logo_bk.svg',
+    icon: '/favicon.ico',
   },
 };
 
