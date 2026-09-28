@@ -152,6 +152,8 @@ export default function Header({ isUnderPage = false }: HeaderProps) {
         className="icon hd-storelink"
         title="Cửa hàng trực tuyến"
         aria-label="Cửa hàng trực tuyến"
+        tabIndex={isOpen ? -1 : 0}
+        aria-hidden={isOpen}
       >
         <Image
           src="/icons/icon_cart.svg"

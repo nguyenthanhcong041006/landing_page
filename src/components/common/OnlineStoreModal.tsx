@@ -68,8 +68,8 @@ export default function OnlineStoreModal({ isOpen, onClose }: OnlineStoreModalPr
             <Image
               src="/images/triace-logo-trans.png"
               alt="Triace Logo"
-              width={125}
-              height={125}
+              width={150}
+              height={150}
               priority
               style={{ objectFit: 'contain' }}
             />

@@ -60,12 +60,12 @@ export default function Footer({ isUnder = false }: FooterProps) {
       <div className="footer-last">
         <ul>
           <li>
-            <Link href="/company">
+            <Link href="https://www.sanyeicorp.com/company/outline.html" target="_blank" rel="noopener noreferrer">
               Giới thiệu doanh nghiệp
             </Link>
           </li>
           <li>
-            <Link href="/privacy-policy">
+            <Link href="https://www.sanyeicorp.com/privacy/" target="_blank" rel="noopener noreferrer">
               Chính sách bảo mật
             </Link>
           </li>

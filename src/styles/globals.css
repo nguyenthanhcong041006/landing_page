@@ -378,7 +378,7 @@ header .logo img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 60;
+  z-index: 70;
   transition: all 0.2s linear;
   padding: 0;
   background: transparent;
@@ -454,7 +454,7 @@ header.open .menu-btn span:nth-child(3) {
   right: -100%;
   top: 0;
   transition: right 0.4s;
-  z-index: 55;
+  z-index: 65;
   display: block;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -604,7 +604,7 @@ a.hd-storelink, button.hd-storelink {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 60;
+  z-index: 50;
   margin: 0;
   text-decoration: none;
   backdrop-filter: blur(4px);
@@ -612,6 +612,14 @@ a.hd-storelink, button.hd-storelink {
   border: none;
   cursor: pointer;
   outline: none;
+  transition: all 0.2s, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+header.open a.hd-storelink,
+header.open button.hd-storelink {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 a.hd-storelink:hover, button.hd-storelink:hover {
@@ -2489,4 +2497,28 @@ ul.single-share li a:hover {
   text-align: center;
   margin-top: 48px;
 }
+
+/* Company Table */
+.company-table {
+  width: 100%;
+}
+
+.company-table th {
+  width: 220px;
+  min-width: 180px;
+  padding-right: 32px;
+  font-weight: 400;
+  text-align: left;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+  .company-table th {
+    width: 130px !important;
+    min-width: 110px !important;
+    padding-right: 16px !important;
+    white-space: normal !important;
+  }
+}
+
 
